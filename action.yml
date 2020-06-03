@@ -9,12 +9,22 @@ inputs:
     required: true
   mode:
     description: 'Supported values: pr & up'
+    required: false
   root:
     description: "Pulumi's root path"
+    required: false
   comment-on-pr:
     description: "Leave a comment for PRs"
+    required: false
   github-token:
     description: "Github Token"
+    required: false
+  yarn:
+    description: "Set to true to force yarn"
+    required: false
+  monorepo:
+    description: "Set to anything if using a monorepo repository (e.g. lerna)"
+    required: false
 branding:
   icon: 'gift'
   color: 'blue'

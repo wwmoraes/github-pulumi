@@ -38,7 +38,9 @@ switch (mode) {
 async function run() {
     await exec('pulumi', ['stack', 'select', stack])
 
-    if (fs.existsSync('package.json')) {
+    // monorepos do not create lock files per package
+    // also, installing from the package scope does not link packages
+    if (fs.existsSync('package.json') && !core.getInput('monorepo')) {
         if (fs.existsSync('yarn.lock') || core.getInput('yarn')) {
             await exec('yarn install')
         } else {
